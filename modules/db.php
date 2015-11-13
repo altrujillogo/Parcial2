@@ -214,6 +214,14 @@ class db
 					break;
 			}
 			break;
+			case "parque":
+			switch($option['lvl2'])
+			{
+				case "all": 
+					$info=$this->get_data("SELECT * FROM parque;");
+					break;
+			}
+			break;
 			
 			default: break;
 		}

@@ -2,19 +2,26 @@
 
 require('configs/include.php');
 
-class c_registrar_parque extends super_controller {
+class c_listar_parques extends super_controller {
 	
 	public function display()
 	{
 		$this->engine->assign('title',$this->gvar['n_index']);
 		
+		$options['parque']['lvl2']="all";
+		$this->orm->connect();
+        $this->orm->read_data(array("parque"),$options);
 
-        $this->engine->assign('cursos',$cursos);
-        $this->engine->assign('estudiantes',$estudiantes);
+
+        $parques=$this->orm->get_objects("parque");
+        
+
+        $this->engine->assign('parques',$parques);
+
 
 		$this->engine->display('header.tpl');
 		$this->engine->display($this->temp_aux);
-		$this->engine->display('registrar_parque.tpl');
+		$this->engine->display('listar_parques.tpl');
 		$this->engine->display('footer.tpl');
 
 	}
@@ -74,7 +81,7 @@ class c_registrar_parque extends super_controller {
 	}
 }
 
-$call = new c_registrar_parque();
+$call = new c_listar_parques();
 $call->run();
 
 ?>
