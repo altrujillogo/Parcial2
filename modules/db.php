@@ -93,6 +93,18 @@ class db
 					break;
 			}
 			break;
+			case "parque":
+			switch($options['lvl2'])
+			{
+				case "normal":
+					$codigo = mysqli_real_escape_string($this->cn,$object->get('codigo'));
+					$nombre = mysqli_real_escape_string($this->cn,$object->get('nombre'));
+					$municipio = mysqli_real_escape_string($this->cn,$object->get('municipio'));
+					$nivel = mysqli_real_escape_string($this->cn,$object->get('nivel'));
+					$this->do_operation("INSERT INTO parque (codigo,nombre,municipio,nivel) VALUES ('$codigo', '$nombre','$municipio','$nivel');",$options['lvl1']);
+					break;
+			}
+			break;
 			
 			case "estudiante":
 			switch($options['lvl2'])
