@@ -55,30 +55,7 @@ class c_listar_parques extends super_controller {
 		
 	}
 	
-	public function insert()
-	{
-		$parque = new parque($this->post);
-		if(is_empty($parque->get('codigo')))
-        {throw_exception("Error: Llenar el codigo");}
-		
-		if($parque->get('nivel')<>"alto" AND $parque->get('nivel')<>"bajo")
-		{throw_exception("Error: nivel no valido");}
 
-		if($parque->get('municipio')<>"medellin" AND $parque->get('municipio')<>"rionegro" AND $parque->get('municipio')<>"la estrella" AND $parque->get('municipio')<>"copacabana" AND $parque->get('municipio')<>"guatape" )
-		{throw_exception("Error: municipio no valido");}
-
-
-		$this->orm->connect();
-        $this->orm->insert_data("normal",$parque);
-        $this->orm->close();
-		
-		$this->type_warning = "success";
-        $this->msg_warning = "Parque insertado correctamente";
-        
-        $this->temp_aux = 'message.tpl';
-        $this->engine->assign('type_warning',$this->type_warning);
-        $this->engine->assign('msg_warning',$this->msg_warning);
-	}
 }
 
 $call = new c_listar_parques();

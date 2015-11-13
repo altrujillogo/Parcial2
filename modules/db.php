@@ -105,6 +105,18 @@ class db
 					break;
 			}
 			break;
+
+			case "calificacion":
+			switch($options['lvl2'])
+			{
+				case "normal":
+					$parque = mysqli_real_escape_string($this->cn,$object->get('parque'));
+					$valor = mysqli_real_escape_string($this->cn,$object->get('valor'));
+					$hora = mysqli_real_escape_string($this->cn,$object->get('hora'));
+					$this->do_operation("INSERT INTO calificacion (parque,valor,hora) VALUES ('$parque', '$valor','$hora');",$options['lvl1']);
+					break;
+			}
+			break;
 			
 			case "estudiante":
 			switch($options['lvl2'])
