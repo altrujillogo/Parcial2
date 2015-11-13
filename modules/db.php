@@ -234,6 +234,14 @@ class db
 					break;
 			}
 			break;
+			case "parque":
+			switch($option['lvl2'])
+			{
+				case "alto": 
+					$info=$this->get_data("SELECT c.parque,c.valor,c.hora FROM calificacion c, parque p WHERE c.parque = p.codigo AND p.nivel='alto';");
+					break;
+			}
+			break;
 			
 			default: break;
 		}

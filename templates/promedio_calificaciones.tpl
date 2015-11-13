@@ -1,0 +1,1 @@
+<label for="parque">{$promedio} </label>
